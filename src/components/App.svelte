@@ -2,7 +2,6 @@
   import * as d3 from 'd3';
   import Viz from './viz.svelte';
   import { onMount } from "svelte";
-    import Slider from './Slider.svelte';
 
   let data = [];
 
@@ -18,7 +17,7 @@
 </script>
 
 <main>
-  <h1>🎗️ Tracking AIDS Around the Globe 🎗️ </h1>
+  <h1> 🎗️ Tracking AIDS Around the Globe 🎗️ </h1>
   <h2> Journey of Hope: Mapping the Global Fight Against AIDS Through Dynamic Bar Charts</h2>
   <Viz {data} />
   <div class = 'write-up'>
@@ -58,7 +57,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap');
 
   :root {
-    --color-bg: #FF0000;
+    --color-bg: #000000;
     --color-outline: #c2c2c2;
     --color-shadow: hsl(0, 0%, 0%, 0.1);
     --color-text: #000000;
@@ -87,12 +86,14 @@
     font-size: 2em;
     font-weight: 300;
     line-height: 2;
-    background-color: #FF6961;
+    background-color: #F4F0E8;
+    color: #D6221D
   }
 
   h3 {
     font-size: 2em;
     font-weight: 500;
+    background-color: #F4F0E8;
   }
 
   .write-up {
@@ -102,5 +103,6 @@
   .body-text {
     font-size: 1em;
     font-weight: 300;
+    /* background-color: #; */
   }
 </style>

@@ -104,7 +104,7 @@
       .attr("x", -height / 2 )
       .attr("y", marginLeft / 2 - 30)
       .style("text-anchor", "middle")
-      .text("Number of AIDS Cases");
+      .text("Number of AIDS Cases / Country Population");
 
     // create legend
     const legendEntries = svg.selectAll(".legend-entry")
