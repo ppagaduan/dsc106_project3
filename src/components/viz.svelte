@@ -2,7 +2,7 @@
   import * as d3 from 'd3';
   import { onMount } from "svelte";
   import Slider from './Slider.svelte';
-    import { readonly } from 'svelte/store';
+  import { readonly } from 'svelte/store';
   
   const width = 1200;
   const height = 800;
@@ -17,6 +17,10 @@
   let gy;
   let legend;
   let selectedYear = 1986;
+  let tooltipVisible=false;
+  let tooltipX = 0; 
+  let tooltipY = 0; 
+  let tooltipContent = '';
 
   // goal: one bar per country, height = NO_CASES
   // 0. filter out data only for 2000
@@ -127,9 +131,34 @@
 
     });
 
+    // tooltip
+  function showToolTip(event, data) {
+    tooltipVisible = true;
+    tooltipContent = `${data.Country}<br> Normalized Percentage of Cases: ${data.cases_normalized_percentage}
+      <br> Number of Cases: ${data.NO_CASES}`;
+    setPosition(event);
+  }
 
+  function hideToolTip() {
+    tooltipVisible = false;
+  }
+
+  function setPosition(event){
+    tooltipX = event.clientX + 'px';
+    tooltipY = event.clientY + 'px';
+  }
 
 </script>
+
+<main>
+  <!-- tooltip -->
+  {#if tooltipVisible}
+  <div class="tooltip" style="left: {tooltipX}; top: {tooltipY};">
+    <!-- <span class="tooltip-text">{tooltipContent}</span> -->
+    {@html tooltipContent}
+  </div>
+  {/if}
+</main>
 
 <!-- MAKE THE BAR PLOT -->
 <div class = "bar plot">
@@ -172,7 +201,7 @@
       text-anchor="middle"
       font-size="20"
     >
-      <!-- Add the emoji corresponding to the country -->
+      <!-- add country flag -->
       {d.flag}
     </text>
 
@@ -183,6 +212,8 @@
       fill={color(d.Region)}
       width= {x.bandwidth()}
       height= {height - y(d.cases_normalized_percentage) - marginBottom}
+      on:mousemove={(event) => showToolTip(event, d)}
+      on:mouseout={() => hideToolTip()}
     />
   {/each}
 </g>
@@ -198,6 +229,7 @@
   style= "max-width: 100%; height: auto;">
 </div>
 
+<!-- slider style -->
 <div class = 'slider'>
 <Slider bind:selectedYear>
     x={width / 2}
@@ -208,5 +240,17 @@
 <style>
   .slider {
     transform: translate(0, 90%);
+  }
+  .tooltip {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    pointer-events: none;
+  }
+
+  .tooltip-text {
+    font-size: 14px;
   }
 </style>
