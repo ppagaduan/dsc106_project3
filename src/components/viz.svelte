@@ -108,7 +108,7 @@
       .attr("x", -height / 2 )
       .attr("y", marginLeft / 2 - 30)
       .style("text-anchor", "middle")
-      .text("Number of AIDS Cases / Country Population");
+      .text("Normalized Percentage of AIDS Cases by Country Population");
 
     // create legend
     const legendEntries = svg.selectAll(".legend-entry")
@@ -245,8 +245,8 @@
     position: fixed;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 5px;
-    border-radius: 5px;
+    padding: 3px;
+    border-radius: 3px;
     pointer-events: none;
   }
 
