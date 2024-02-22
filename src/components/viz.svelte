@@ -127,6 +127,8 @@
 
     });
 
+
+
 </script>
 
 <!-- MAKE THE BAR PLOT -->
@@ -163,9 +165,16 @@
 <g stroke="#000" stroke-opacity="0.2">
   {#each filteredData as d, i}
 
-    <!-- $(document.ready(function(){
-      console.log(y(d.cases_normalized_percentage))
-    }) -->
+    <!-- Emojis -->
+    <text
+      x={x(d.Country) + x.bandwidth() / 2}
+      y={y(d.cases_normalized_percentage) - 10}
+      text-anchor="middle"
+      font-size="20"
+    >
+      <!-- Add the emoji corresponding to the country -->
+      {d.flag}
+    </text>
 
     <rect
       key={i}
