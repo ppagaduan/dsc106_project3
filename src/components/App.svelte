@@ -47,7 +47,8 @@
       finalized the display and functionality of the chart. Next, we implemented the legend of the chart, which was done by Heidi. 
       However, in order to make the axes and legend static within the visualization, Paige implemented each component as reactive 
       variables. Finally, the slider of the visualization was implemented. This was done by adding a new slider component to the 
-      visualization.
+      visualization, which was done by Heidi. This took approximately three hours. Finally, we adjusted the layout of the website,
+      accounting for spacing between the labeling and components of the graph.
     </p>
   </div>
 
